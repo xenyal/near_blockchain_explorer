@@ -1,0 +1,5 @@
+near_api_sync:
+  cron: "*/1 * * * *"
+  class: NearApiSyncWorker
+  queue: default
+  description: "Syncs data from the NEAR Blockchain API"
