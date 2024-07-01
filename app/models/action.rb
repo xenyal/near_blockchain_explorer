@@ -12,6 +12,8 @@
 class Action < ApplicationRecord
   self.inheritance_column = :_type_disabled
 
+  TRANSFER_TYPE = "Transfer".freeze
+
   belongs_to :block_transaction
 
   validates :type, presence: true

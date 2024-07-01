@@ -21,5 +21,13 @@ class BlockTransaction < ApplicationRecord
   validates :sender, presence: true
   validates :receiver, presence: true
   validates :gas_burnt, presence: true
-  validates :success, presence: true
+  validates :success, inclusion: { in: [true, false] }
+
+  after_create :schedule_avg_gas_burnt_recalculation
+
+  private
+
+  def schedule_avg_gas_burnt_recalculation
+    RecalculateAvgGasBurntWorker.perform_async(block.blockchain_id)
+  end
 end

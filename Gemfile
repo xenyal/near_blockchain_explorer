@@ -8,11 +8,13 @@ gem "puma", ">= 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
-gem "jbuilder"
-gem "oj"
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "bootsnap", require: false
 gem "pry-rails"
+
+# JSON Serialiazation
+gem "oj"
+gem "panko_serializer"
 
 # JS/React asset compilation
 gem 'jsbundling-rails'

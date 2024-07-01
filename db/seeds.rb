@@ -8,4 +8,4 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Blockchain.find_or_initialize_by(name: Blockchain::NEAR_BLOCKCHAIN_NAME)
+Blockchain.create!(name: Blockchain::NEAR_BLOCKCHAIN_NAME)

@@ -6,14 +6,14 @@ module NEAR
     sidekiq_options retry: 0
 
     def perform(block_data)
-      return if Block.find_by(hash: block_data["block_hash"])
+      return if Block.find_by(block_hash: block_data["block_hash"])
 
       # validate block_data depending on how immutable block data is
       # -- let's assume that it is immutable since it's on the chain
 
       block = Block.create!(
-        block_id: block_data["block_id"],
-        hash: block_data["block_hash"],
+        block_id: block_data["id"],
+        block_hash: block_data["block_hash"],
         height: block_data["height"],
         time: block_data["time"],
         created_at: block_data["created_at"],
@@ -23,7 +23,7 @@ module NEAR
 
       transaction = BlockTransaction.create!(
         block: block,
-        hash: block_data["hash"],
+        transaction_hash: block_data["hash"],
         sender: block_data["sender"],
         receiver: block_data["receiver"],
         gas_burnt: block_data["gas_burnt"].to_i,
@@ -34,7 +34,7 @@ module NEAR
       block_data["actions"].each do |action|
         Action.create!(
           block_transaction: transaction,
-          action_type: action["type"],
+          type: action["type"],
           data: action["data"].to_json
         )
       end
