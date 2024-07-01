@@ -1,7 +1,12 @@
 import React from "react";
+import BlockchainExplorer from './BlockchainExplorer';
 
 const App = () => {
-  return <div>Root</div>;
+  return (
+    <div className="App">
+      <BlockchainExplorer />
+    </div>
+  );
 };
 
 export default App;
