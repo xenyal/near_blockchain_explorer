@@ -1,6 +1,8 @@
-# Blockchain Explorer
+# 🌐 NEAR Blockchain Explorer
 
 This is a blockchain explorer application designed to fetch and display transactions from the NEAR blockchain. The application is built using Ruby on Rails for the backend and React for the frontend, with Tailwind CSS for styling.
+
+![Screenshot 2024-07-01 at 2 51 03 AM](https://github.com/xenyal/near_blockchain_explorer/assets/1797007/302c65ea-805c-41e7-8541-929392aad85f)
 
 ## Features
 
