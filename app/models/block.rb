@@ -6,7 +6,7 @@
 #  blockchain_id :bigint           not null
 #  block_id      :string           not null
 #  height        :bigint           not null
-#  hash          :string           not null
+#  block_hash    :string           not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  time          :datetime         not null
@@ -15,7 +15,7 @@ class Block < ApplicationRecord
   belongs_to :blockchain
   has_many :block_transactions, dependent: :destroy
 
-  validates :hash, presence: true, uniqueness: true
+  validates :block_hash, presence: true, uniqueness: true
   validates :height, presence: true
   validates :time, presence: true
   validates :block_id, presence: true

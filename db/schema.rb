@@ -15,17 +15,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_022024) do
   enable_extension "plpgsql"
 
   create_table "actions", force: :cascade do |t|
-    t.bigint "block_transactions_id", null: false
+    t.bigint "block_transaction_id", null: false
     t.string "type", null: false
     t.json "data", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["block_transactions_id"], name: "index_actions_on_block_transactions_id"
+    t.index ["block_transaction_id"], name: "index_actions_on_block_transaction_id"
+    t.index ["type"], name: "index_actions_on_type"
   end
 
   create_table "block_transactions", force: :cascade do |t|
     t.bigint "block_id", null: false
-    t.string "hash", null: false
+    t.string "transaction_hash", null: false
     t.string "sender", null: false
     t.string "receiver", null: false
     t.bigint "gas_burnt", null: false
@@ -35,7 +36,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_022024) do
     t.datetime "updated_at", null: false
     t.index ["block_id"], name: "index_block_transactions_on_block_id"
     t.index ["gas_burnt"], name: "index_block_transactions_on_gas_burnt"
-    t.index ["hash"], name: "index_block_transactions_on_hash", unique: true
+    t.index ["transaction_hash"], name: "index_block_transactions_on_transaction_hash", unique: true
   end
 
   create_table "blockchains", force: :cascade do |t|
@@ -49,16 +50,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_022024) do
     t.bigint "blockchain_id", null: false
     t.string "block_id", null: false
     t.bigint "height", null: false
-    t.string "hash", null: false
+    t.string "block_hash", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "time", null: false
+    t.index ["block_hash"], name: "index_blocks_on_block_hash", unique: true
     t.index ["blockchain_id"], name: "index_blocks_on_blockchain_id"
     t.index ["created_at"], name: "index_blocks_on_created_at"
-    t.index ["hash"], name: "index_blocks_on_hash", unique: true
   end
 
-  add_foreign_key "actions", "block_transactions", column: "block_transactions_id"
+  add_foreign_key "actions", "block_transactions"
   add_foreign_key "block_transactions", "blocks"
   add_foreign_key "blocks", "blockchains"
 end
