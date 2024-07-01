@@ -1,10 +1,12 @@
 require_relative "boot"
-
 require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+
+# Load environment variables from `.env` file
+Dotenv::Railtie.load if defined?(Dotenv::Railtie)
 
 module SimNearBlockchainExplorer
   class Application < Rails::Application
