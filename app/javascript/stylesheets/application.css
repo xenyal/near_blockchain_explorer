@@ -1,0 +1,25 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body {
+  background: #1a1a1a;
+  font-family: 'Roboto', sans-serif;
+}
+
+.container {
+  background: #2a2a2a;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+h1, h2, h3 {
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  margin-top: 20px;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}

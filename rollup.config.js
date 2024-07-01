@@ -2,6 +2,7 @@ import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
+import postcss from 'rollup-plugin-postcss';
 
 import { terser } from 'rollup-plugin-terser';
 
@@ -29,6 +30,13 @@ export default {
       ]
     }),
     commonjs(),
+    postcss({
+      extract: true,
+      plugins: [
+        require('tailwindcss'),
+        require('autoprefixer'),
+      ]
+    }),
     terser()
   ],
 };
