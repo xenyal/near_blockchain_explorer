@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :transfers, only: [:index]
+
+      get 'blockchains/:id/avg_gas_burnt', to: 'blockchains#show_avg_gas_burnt'
     end
   end
 end
