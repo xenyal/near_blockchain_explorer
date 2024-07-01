@@ -12,6 +12,7 @@ gem "jbuilder"
 gem "oj"
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "bootsnap", require: false
+gem "pry-rails"
 
 # JS/React asset compilation
 gem 'jsbundling-rails'
@@ -35,4 +36,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "database_cleaner"
 end

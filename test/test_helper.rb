@@ -1,6 +1,7 @@
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
+require "database_cleaner"
 
 module ActiveSupport
   class TestCase
@@ -11,5 +12,16 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+    
+    DatabaseCleaner.strategy = :transaction
+
+    setup do
+      DatabaseCleaner.start
+      load Rails.root.join('db', 'seeds.rb')
+    end
+  
+    teardown do
+      DatabaseCleaner.clean
+    end
   end
 end
